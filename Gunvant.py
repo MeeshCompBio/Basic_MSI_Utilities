@@ -34,7 +34,6 @@ for line in seqfile:
         #if it is 10 or above just grab it
         else:
             FCHR = CHR[1]
-        print(FCHR)
         #combine it for printing
         final= str(FCHR)+'\t'+str('\t'.join(columns[1:])+'\n')
         output.write(final)
