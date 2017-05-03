@@ -13,6 +13,7 @@ seqfile = open(sys.argv[1], "r")
 output = open(sys.argv[2], "w")
 identifierlist = list()
 sequenceinfolist = list()
+out = []
 
 #store all relavent information
 for line in seqfile:
@@ -34,6 +35,9 @@ for line in seqfile:
         #if it is 10 or above just grab it
         else:
             FCHR = CHR[1]
+        if out != FCHR:
+            print("Working on Chromosome "+FCHR)
+            out = FCHR
         #combine it for printing
         final= str(FCHR)+'\t'+str('\t'.join(columns[1:])+'\n')
         output.write(final)
