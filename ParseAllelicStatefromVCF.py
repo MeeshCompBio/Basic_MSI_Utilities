@@ -66,7 +66,7 @@ for line in sequenceinfolist:
 
 output = open(sys.argv[3], "w")
 
-output.write(','.join(header))
+output.write('\t'.join(header))
 output.write('\n')
 
 PLIST= list()
@@ -76,7 +76,7 @@ for j in range(len(var[1])):
     for i in var:
         final.append(i[j])
     #make output comma seperated
-    output.write(','.join(final)+'\n')
+    output.write('\t'.join(final)+'\n')
 
 
 
