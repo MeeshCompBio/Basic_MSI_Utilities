@@ -1,5 +1,6 @@
 """This takes a GATK.vcf file as input and return the same file, but converst the Chr to just 
-numbers with no 0's. This was made for Gunvant by Jean-Michel Michno "Meesh" (mich0391@umn.edu)"""
+numbers with no 0's. This was made for Gunvant for use in a specifc software
+by "Meesh" (mich0391@umn.edu)"""
  
  
 #example use
