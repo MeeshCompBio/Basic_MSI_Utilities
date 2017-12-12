@@ -16,7 +16,7 @@ export PATH=/home/<USER>/Software/mercurial-4.4
 cd ..
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
-#follow the prompts
+#follow the prompts and say yes to adding local path to .bashrc
 
 #source .bashrc to take .bashrc changes into effect
 source ~/.bashrc
