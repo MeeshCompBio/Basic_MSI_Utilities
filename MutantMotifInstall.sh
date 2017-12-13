@@ -23,7 +23,7 @@ source ~/.bashrc
 
 
 #create env, this one is called MutMot using python3
-conda create --name MutMot python=3.6
+conda create --name MutMot python=3
 source activate MutMot
 
 #conda prefers using it's own install, plus MutationMotif rpy2 pip install will break later in the install
