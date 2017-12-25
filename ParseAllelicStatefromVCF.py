@@ -1,11 +1,13 @@
 """This takes a GATK.vcf file as input, the numer of samples, and the name of your desired
- ouput file and returns you a .csv file with the allelic state for each sample"""
+ ouput file and returns you a .csv file with the allelic state for each sample. While this
+ script is still functional, it was made a long time and is not opmtimized for speed and
+ efficiency"""
  
  
 #example use
-#python3 your.vcf 3 output.csv
+#python3 your.vcf 3 output.tsv
 
-
+#load packages
 import sys
 from itertools import takewhile, islice
 
@@ -13,7 +15,9 @@ seqfile = open(sys.argv[1], "r")
 #output = open(sys.argv[2], 'w')
 NumberSamples = int(sys.argv[2])
 
-#pull out the headers
+# pull out headers
+# This reads the file and finds the last line that has a #
+# it then remembers that index to pull out the headers
 header = list()
 with seqfile as f:
     start = sum(1 for _ in takewhile(lambda x: x[0] == "#", f)) - 1
@@ -36,8 +40,9 @@ with seqfile as f:
 print("These are your headers""\n",header)
 
 
-
+# read in file for data comsumption
 seqfile = open(sys.argv[1], "r")
+#create empty lists
 identifierlist = list()
 sequenceinfolist = list()
 
@@ -54,10 +59,11 @@ for line in seqfile:
 
 
 var = [[] for _ in range(len(header))]
-# parse our the file
+# parse out the file
 for line in sequenceinfolist:
     columns = line.split("\t")
     for i in range(len(header)):
+        # Keep first 9 fields as they were
         if i < 9:
             var[i].append(columns[i])
         else:
@@ -75,7 +81,7 @@ for j in range(len(var[1])):
     final = []
     for i in var:
         final.append(i[j])
-    #make output comma seperated
+    #make output tab seperated
     output.write('\t'.join(final)+'\n')
 
 
