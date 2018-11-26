@@ -61,7 +61,7 @@ for line in vcf_file:
     line = line.strip()
     if line.startswith("#CHROM"):
         print("These are your headers""\n", line)
-        # print(line, file=out_file)
+        print(line, file=out_file)
     elif line.startswith("#"):
         continue
     else:
