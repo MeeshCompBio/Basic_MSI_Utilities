@@ -1,3 +1,8 @@
+##########################################################################
+"""This code is old and depreciated, please use Parse_Allele.py instead"""
+##########################################################################
+
+
 """This takes a GATK.vcf file as input, the numer of samples, and the name of your desired
  ouput file and returns you a .csv file with the allelic state for each sample. While this
  script is still functional, it was made a long time and is not opmtimized for speed and
