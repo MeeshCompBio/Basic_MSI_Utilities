@@ -1,5 +1,4 @@
-"""This sctip will take a gff file as input and parce out the longest
-   transcripts  in gff format for formatting for exon mapping"""
+"""This sctip will take a VCF file as input and parce out genotype calls"""
 
 import sys
 import getopt
