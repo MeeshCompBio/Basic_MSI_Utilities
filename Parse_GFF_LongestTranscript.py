@@ -3,18 +3,19 @@
 
 import sys
 import getopt
-import operator
 
 
 def usage():
     print("""\n
         This is the usage function:
-        python3 Parse_GFF_LongestTranscript.py -g <gff_file> -o <output_file> -i <id_field>
+        python3 Parse_GFF_LongestTranscript.py -g <gff_file> -o <output_file>
+        -i <id_field>
             -g or gff_file The name of the gff file you want to use
             -o or output_file  The name of your GO network object
             -i or id_field the value of field in gff representative of
                            transcript id (typically "Parent" or "ID")
         \n""")
+
 
 try:
     opts, args = getopt.getopt(sys.argv[1:], "g:o:i:h", ["gff_file=",
@@ -59,9 +60,9 @@ for row in in_file:
         # If we find a gene, this signifies the step to find the longest
         # transcript for the prevoius gene
         if fields[2] == "gene":
-            # This is to prevent erros on first loop with
+            # This is to prevent errors on first loop with
             if bool(Transcript_Compare):
-                # Return key with larges value
+                # Return key with largest value
                 Longest_transcript = max(Transcript_Compare,
                                          key=Transcript_Compare.get)
                 # Use key to pull out raw row informaiton for transcripts
@@ -93,7 +94,7 @@ for row in in_file:
                     # pull out that name removing the prefix
                     Transcript = ID_Field_val[(T_ID_Length+1):]
 
-            # Lood to see if that transcript is already in the dict
+            # Look to see if that transcript is already in the dict
             if Transcript in Transcript_Compare.keys():
                 Transcript_Compare[Transcript] += (Size)
                 # Store the raw row information using the same key
@@ -102,6 +103,18 @@ for row in in_file:
                 # if not namke a new one
                 Transcript_Compare[Transcript] = Size
                 Gff_line_exon[Transcript] = [row]
+
+# Run for the last gene
+if bool(Transcript_Compare):
+    Longest_transcript = max(Transcript_Compare,
+                             key=Transcript_Compare.get)
+    # Use key to pull out raw row informaiton for transcripts
+    Exon_Lines = Gff_line_exon[Longest_transcript]
+    print("".join(Exon_Lines), file=out_file, end="")
+
+    # print out the gene row information
+    print(row, file=out_file, end="")
+
 
 # close files for safety
 in_file.close()
