@@ -1,4 +1,4 @@
-"""This sctip will take a gff file as input and parce out the longest
+"""This script will take a gff file as input and parce out the longest
    transcripts  in gff format for formatting for exon mapping"""
 
 import sys
@@ -11,7 +11,7 @@ def usage():
         python3 Parse_GFF_LongestTranscript.py -g <gff_file> -o <output_file>
         -i <id_field>
             -g or gff_file The name of the gff file you want to use
-            -o or output_file  The name of your GO network object
+            -o or output_file  The name of your output file
             -i or id_field the value of field in gff representative of
                            transcript id (typically "Parent" or "ID")
         \n""")
